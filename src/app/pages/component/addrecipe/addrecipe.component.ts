@@ -17,10 +17,18 @@ export class NgbdAddRecipeBasic implements OnInit {
   form: FormGroup;
   recipeDetails;
   recipeId;
+  userid;
+  userName;
   constructor( private recipeservice: RecipedataService, private snackbar: MatSnackBar, public router: Router,
                public  route: ActivatedRoute, private formBuilder: FormBuilder, private spinner: NgxSpinnerService ) { }
 
   ngOnInit() {
+
+    if (localStorage.getItem('currentuser')) {
+      const userObj = JSON.parse(localStorage.getItem('currentuser'));
+      this.userid = userObj.id;
+      this.userName = userObj.userName;
+    }
 
     this.route.paramMap.subscribe(params => {
       this.recipeId = params.get('id');
@@ -138,6 +146,8 @@ export class NgbdAddRecipeBasic implements OnInit {
       });
 
     }else {
+      this.form.value.userid = this.userid;
+      console.log(this.form.value);
       this.recipeservice.addRecipe(this.form.value).subscribe(res => {
         const snack = this.snackbar.open('Recipe Added Successfully', '', {
           duration: 500,

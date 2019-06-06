@@ -59,9 +59,12 @@ export class RecipedataService {
     return this.http.post(`${this.uri}/add`, obj);
 
   }
-  // searchRecipe(recipename) {
-  //   return this
-  //     .http
-  //     .get(`${this.uri}/search/${recipename}`);
-  // }
+
+
+  getMyRecipe(userid) {
+    return this
+      .http
+      .get(`${this.uri}/madebyme/${userid}`);
+  }
+
 }

@@ -7,10 +7,10 @@ const routes: Routes = [
     {
         path: '',  canActivate: [AuthGuard], component: PageComponent,
         children: [
-            { path: 'home', loadChildren: './starter/starter.module#StarterModule' },
-            { path: 'add', loadChildren: './component/addrecipe/addrecipe.module#AddrecipeModule' },
+          { path: 'home', loadChildren: './starter/starter.module#StarterModule' },
+          { path: 'add', loadChildren: './component/addrecipe/addrecipe.module#AddrecipeModule' },
           { path: 'edit/:id', loadChildren: './component/addrecipe/addrecipe.module#AddrecipeModule' },
-
+          { path: 'myrecipe', loadChildren: './myrecipe/myrecipe.module#MyrecipeModule' },
           { path: '', redirectTo: 'home', pathMatch: 'full', },
         ]
     }

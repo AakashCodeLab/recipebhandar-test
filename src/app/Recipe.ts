@@ -1,4 +1,6 @@
+
 export default class Recipe {
+  userid: String;
   name: String;
   recipeDetail: String;
   ingredients: [{

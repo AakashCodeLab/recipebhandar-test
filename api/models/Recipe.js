@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 
 // Define collection and schema for Recipe
 let Recipe = new Schema({
+  userid: {
+    type: String
+  },
   name: {
     type: String
   },

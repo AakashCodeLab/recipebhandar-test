@@ -6,7 +6,7 @@ const recipeRoutes = express.Router();
 let Recipe = require('../models/Recipe');
 // Defined store route
 recipeRoutes.route('/add').post(function (req, res) {
-
+console.log(req.body)
   let recipe = new Recipe(req.body);
   recipe.save()
     .then(recipe => {
@@ -30,9 +30,6 @@ recipeRoutes.route('/').get(function (req, res) {
 });
 
 
-
-
-
 // Defined edit route
 recipeRoutes.route('/edit/:id').get(function (req, res) {
   let id = req.params.id;
@@ -43,13 +40,16 @@ recipeRoutes.route('/edit/:id').get(function (req, res) {
 
 // Defined edit route
 recipeRoutes.route('/madebyme/:id').get(function (req, res) {
+
   let id = req.params.id;
-  Recipe.findById(id, function (err, recipe){
+  console.log('myid',id);
+  Recipe.find({userid: req.params.id}, function (err, recipe){
+    if(err){
+      console.log(err);
+    }
     res.json(recipe);
   });
 });
-
-
 
 
 //  Defined update route
@@ -117,20 +117,5 @@ recipeRoutes.route('/search/:recipename')
   });
 
 
-// //  Defined update route
-// recipeRoutes.route('/search/:recipename').get(function (req, res) {
-//   console.log(req.params.id);
-//
-//   Recipe.findById(req.params.id, function(err, recipe) {
-//     if (!recipe)
-//       return next(new Error('Could not load Document'));
-//     else {
-//
-//         .catch(err => {
-//           res.status(400).send("unable to update the database");
-//         });
-//     }
-//   });
-// });
 
 module.exports = recipeRoutes;
