@@ -1,0 +1,110 @@
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="pacman">
+  <p style="font-size: 20px; color: white;position: relative; top:40px;"></p>
+  ></ngx-spinner>
+
+<section id="" *ngIf="!viewRecipePage">
+  <div class="" style="display: flex;justify-content: space-around;margin: 14px;flex-wrap: wrap;">
+    <a *ngFor="let recipe of recipeData; let i = index;">
+      <div class="recipe">
+        <!--<i (click)="deleteRecipe(recipe._id)" class="icon">×</i>-->
+        <!--<a (click)="edit(recipe._id)">-->
+          <!--<i class="icon2">✍</i>-->
+        <!--</a>-->
+        <img src={{recipe.url}} alt="{{recipe.name}}">
+        <h3 style="position: relative;top: 24px;"> {{recipe.name}} </h3>
+        <p style="position: relative;top: 16px;">by
+          <span class="author">{{recipe.author}} </span>
+        </p>
+        <div style="display: flex;justify-content:space-around;z-index: 9">
+
+          <a (click)="edit(recipe._id)" class="btn btn-primary a-btn-slide-text" style="">
+            <span class="glyphicon glyphicon-plus icon-pencil" aria-hidden="true" ></span>
+            <span><strong>Edit</strong></span>
+          </a>
+          <a  (click)="viewRecipe(recipe)" class="btn btn-primary a-btn-slide-text" style="">
+            <span class="glyphicon glyphicon-plus icon-eye" aria-hidden="true"></span>
+            <span><strong>View</strong></span>
+          </a>
+          <a (click)="deleteRecipe(recipe._id)" class="btn btn-primary a-btn-slide-text" style="">
+            <span class="glyphicon glyphicon-plus icon-trash " aria-hidden="true"></span>
+            <span><strong>Delete</strong></span>
+          </a>
+
+        </div>
+
+      </div>
+
+
+
+    </a>
+  </div>
+</section>
+
+<div *ngIf="viewRecipePage">
+
+  <div class="w3-clear nextprev">
+    <a  style="color: white !important;" (click)="GoToListRecipe()" class="w3-left w3-btn">❮ Go Back</a>
+  </div>
+  <div class="main recipeDetail" style="background-color:#F9BD39">
+    <div class="page-header" [style.backgroundImage]="'url('+ reacipeDetails.url +')'" style="height: 100%">
+      <div class="content-center">
+        <div class="container" style="text-align: center">
+          <h1 class="">{{reacipeDetails.name}}, <br /></h1>
+
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid recipe-details"  >
+      <div class="row">
+        <div class="col-md-12" >
+          <h2 style="display: flex;justify-content: center;" class="title recipe-name">How to make {{reacipeDetails.name}}</h2>
+          <p class="user-name" style="display: flex;justify-content: center;">By {{reacipeDetails.author}}</p>
+        </div>
+      </div>
+      <br>
+      <div class="row col-md-12" style="display: flex;justify-content: center" >
+        <div class=" row col-md-12 card-blog card-plain">
+          <div class="col-md-6" >
+            <h3 class="ingredients">Ingredients</h3>
+
+              <li  *ngFor="let ingredients of reacipeDetails.ingredients; let i = index" style="font-size: 16px; color: mintcream !important;" >
+               {{ingredients.ingredient}}
+              </li>
+
+          </div>
+
+          <div class="col-md-6" >
+          <h3 class="directions"  >Directions</h3>
+
+            <p  *ngFor="let instruction of instructionArray; let i = index" style="font-size: 16px; color: mintcream !important;" >
+              {{i+1+'.'}} {{ instruction}}
+            </p>
+
+           <!--<p style="font-size: 16px">{{reacipeDetails.instructions}}</p>-->
+</div>
+</div>
+<div></div>
+<div style="display: flex;justify-content: center;margin-top: 16px" class="row col-md-12">
+  <div class="col-md-6 time-instructions" style="line-height: 10px"  >
+
+    <p style="margin-left: 14px">  Preparation : {{reacipeDetails.preptime}}</p>
+    <p style="margin-left: 14px">  Cooking:  {{reacipeDetails.cooktime}}</p>
+   <p style="margin-left: 14px">  Ready in: 20 min</p>
+  </div>
+  <div class="col-md-6" >
+
+    <p>Note: With the heel of your palm or the base of a flat metal bowl, mash the khoya, so that no grains remain..</p>
+
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
