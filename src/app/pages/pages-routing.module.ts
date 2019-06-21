@@ -11,8 +11,8 @@ const routes: Routes = [
           { path: 'add', loadChildren: './component/addrecipe/addrecipe.module#AddrecipeModule' },
           { path: 'edit/:id', loadChildren: './component/addrecipe/addrecipe.module#AddrecipeModule' },
           { path: 'myrecipe', loadChildren: './myrecipe/myrecipe.module#MyrecipeModule' },
-          { path: '', redirectTo: 'home', pathMatch: 'full', },
-          { path: '**', redirectTo: '' }
+          { path: '', redirectTo: 'home', pathMatch: 'full'},
+          { path: '**', redirectTo: 'home', pathMatch: 'full'}
         ]
     }
 ];
