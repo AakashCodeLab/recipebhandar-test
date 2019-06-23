@@ -44,7 +44,10 @@ app.get('/getversion',function(req,res){
 });
 app.use('/recipe', recipeRoute);
 app.use('/user', userRoute);
+app.get('/*', function(req,res) {
 
+  res.sendFile(path.join(__dirname+'/dist/index.html'));
+});
 
 const port = process.env.PORT || 8080;
 
