@@ -1,6 +1,6 @@
 # recipebhandar
 
-This was built using Angular 7 with offline support using pwa , to view live projects visit http://recipebhanadar-test.herokuapp.com
+This was built using Angular 7 with offline support using pwa , to view live projects visit https://recipebhandar.herokuapp.com/
 
 We carry our phones with us everywhere we go — whether it be our living room or workspace — so why shouldn’t we venture into our kitchens with them?
 recipebhandar app are the next step in the complete mobile takeover, offering step-by-step instructions on how to make a fine oven-fried chimichanga, curate a weekly meal plan, and or even get prepared for the future of food.
