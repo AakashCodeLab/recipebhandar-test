@@ -15,6 +15,9 @@ export class SignupComponent implements OnInit {
     constructor(public router: Router, private formBuilder: FormBuilder, public authentication: AuthenticationService, private snackbar: MatSnackBar) { }
 
     ngOnInit() {
+      if (localStorage.getItem('currentuser')) {
+        this.router.navigate(['/home']);
+      }
       this.registerForm = this.formBuilder.group({
         userName: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
