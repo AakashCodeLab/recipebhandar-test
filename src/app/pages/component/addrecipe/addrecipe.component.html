@@ -19,26 +19,26 @@
               <div class="col-12">
                 <div class="jumbotron">
                   <h2>{{pageTitle}}</h2>
-                  <form name="form" [formGroup]="form" (ngSubmit)="form.valid && onSubmit()">
+                  <form name="form" [formGroup]="form" (ngSubmit)=" onSubmit()">
                     <div class="form-group">
                       <label for="author">Athor</label>
-                      <input type="text"  class="form-control" formControlName="author" [ngClass]="{'is-invalid':form.get('author').touched && form.get('author').invalid}" required />
-                      <div class="invalid-feedback">
-                        <div>Athor Name is required</div>
+                      <input type="text"  class="form-control" formControlName="author" [ngClass]="{'is-invalid': (form.get('author').touched && form.get('author').invalid) || (submitted && f.author.errors) }" required />
+                      <div *ngIf="(form.get('author').touched && form.get('author').invalid)||(submitted && f.author.errors) " class="invalid-feedback">
+                        <div *ngIf="f.author.errors.required">Athor Name is required</div>
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="name">Recipe Name:</label>
-                      <input type="text" class="form-control" formControlName="name" [ngClass]="{'is-invalid':form.get('name').touched && form.get('name').invalid}" required />
-                      <div class="invalid-feedback">
-                        <div>Recipe Name is required</div>
+                      <input type="text" class="form-control" formControlName="name" [ngClass]="{'is-invalid': (form.get('name').touched && form.get('name').invalid) || (submitted  && f.name.errors)}" required />
+                      <div *ngIf="(form.get('name').touched && form.get('name').invalid)|| (submitted && f.name.errors)" class="invalid-feedback">
+                        <div  *ngIf="f.name.errors.required">Recipe Name is required</div>
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="recipeDetail">Recipe Details:</label>
-                      <input type="text" class="form-control" formControlName="recipeDetail" [ngClass]="{'is-invalid':form.get('recipeDetail').touched && form.get('recipeDetail').invalid}" required />
-                      <div class="invalid-feedback">
-                        <div>Recipe Details required</div>
+                      <input type="text" class="form-control" formControlName="recipeDetail" [ngClass]="{'is-invalid':(form.get('recipeDetail').touched && form.get('recipeDetail').invalid)  || (submitted  && f.recipeDetail.errors)}" required />
+                      <div *ngIf="(form.get('recipeDetail').touched && form.get('recipeDetail').invalid)|| (submitted && f.recipeDetail.errors)" class="invalid-feedback">
+                        <div *ngIf="f.recipeDetail.errors.required">Recipe Details required</div>
                       </div>
                     </div>
                     <!--getControls(form, 'ingredients');-->
@@ -69,25 +69,25 @@
 
                     <div style="margin-top: 16px;" class="form-group">
                       <label for="instructions">Instructions:</label>
-                      <textarea type="text" class="form-control" placeholder="Put each step on its own line." formControlName="instructions" [ngClass]="{'is-invalid':form.get('instructions').touched && form.get('instructions').invalid}" required ></textarea>
-                      <div class="invalid-feedback">
-                        <div>Recipe Instructions required</div>
+                      <textarea type="text" class="form-control" placeholder="Put each step on its own line." formControlName="instructions" [ngClass]="{'is-invalid':(form.get('instructions').touched && form.get('instructions').invalid) || (submitted  && f.instructions.errors)}" required ></textarea>
+                      <div  *ngIf="(form.get('instructions').touched && form.get('instructions').invalid)|| (submitted && f.instructions.errors)"  class="invalid-feedback">
+                        <div  *ngIf="f.instructions.errors.required" >Recipe Instructions required</div>
                       </div>
                     </div>
 
                     <div style="margin-top: 16px;" class="form-group" class="prep-time">
                       <div class="col-sm-12 col-md-6" style="padding: 0">
                         <label for="preptime">Preparation Time:</label>
-                        <input type="number" class="form-control" placeholder="In Minutes"  formControlName="preptime" [ngClass]="{'is-invalid':form.get('preptime').touched && form.get('preptime').invalid}" required />
-                        <div class="invalid-feedback">
-                          <div>Preparation Time required</div>
+                        <input type="number" class="form-control" placeholder="In Minutes"  formControlName="preptime" [ngClass]="{'is-invalid':(form.get('preptime').touched && form.get('preptime').invalid) || (submitted  && f.preptime.errors)}" required />
+                        <div *ngIf="(form.get('preptime').touched && form.get('preptime').invalid) || (submitted  && f.preptime.errors)" class="invalid-feedback">
+                          <div *ngIf="f.preptime.errors.required">Preparation Time required</div>
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 cook-time" >
                         <label for="cooktime">Cook Time:</label>
-                        <input type="number" class="form-control" placeholder="In Minutes" formControlName="cooktime" [ngClass]="{'is-invalid':form.get('cooktime').touched && form.get('cooktime').invalid}" required />
-                        <div class="invalid-feedback">
-                          <div>Cook Time required</div>
+                        <input type="number" class="form-control" placeholder="In Minutes" formControlName="cooktime" [ngClass]="{'is-invalid':(form.get('cooktime').touched && form.get('cooktime').invalid) || (submitted  && f.cooktime.errors)}" required />
+                        <div *ngIf="(form.get('cooktime').touched && form.get('cooktime').invalid) || (submitted  && f.cooktime.errors)" class="invalid-feedback">
+                          <div *ngIf="f.cooktime.errors.required">Cook Time required</div>
                         </div>
                       </div>
 
@@ -97,14 +97,14 @@
 
                     <div class="form-group">
                       <label for="url">Add Image (URL):</label>
-                      <input type="text" class="form-control" formControlName="url" [ngClass]="{'is-invalid':form.get('url').touched && form.get('url').invalid}" required />
-                      <div class="invalid-feedback">
-                        <div>Image Url is required</div>
+                      <input type="text" class="form-control" formControlName="url" [ngClass]="{'is-invalid':(form.get('url').touched && form.get('url').invalid) || (submitted  && f.url.errors)}" required />
+                      <div *ngIf="(form.get('url').touched && form.get('url').invalid) || (submitted  && f.url.errors)" class="invalid-feedback">
+                        <div *ngIf="f.url.errors.required">Image Url is required</div>
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <button class="btn btn-primary"  [disabled]="!form.valid">{{buttonName}} </button>
+                      <button class="btn btn-primary" >{{buttonName}} </button>
                     </div>
                   </form>
                 </div>

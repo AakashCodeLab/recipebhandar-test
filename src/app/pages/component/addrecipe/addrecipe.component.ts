@@ -11,7 +11,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
   styleUrls: ['./addrecipe.component.scss']
 })
 export class NgbdAddRecipeBasic implements OnInit {
-
+  submitted = false;
   pageTitle: string;
   buttonName: string;
   form: FormGroup;
@@ -66,7 +66,9 @@ export class NgbdAddRecipeBasic implements OnInit {
         this.ingredients()
       ])
     });
+
   }
+  get f() { return this.form.controls; }
   getRecipeDeatailsById(recipeId) {
     this.spinner.show();
     this.recipeservice.getRecipeDeatailsById(recipeId).subscribe(recipe => {
@@ -128,7 +130,9 @@ export class NgbdAddRecipeBasic implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    console.log(66, this.form.value);
+
+
     this.mapFormValuesToRecipeModel();
     if (this.recipeId){
       this.recipeservice.updateRecipe(this.recipeDetails, this.recipeId).subscribe(res => {
@@ -146,6 +150,11 @@ export class NgbdAddRecipeBasic implements OnInit {
       });
 
     }else {
+      this.submitted = true;
+      console.log(this.form);
+      if (this.form.invalid) {
+        return;
+      }
       this.form.value.userid = this.userid;
       console.log(this.form.value);
       this.recipeservice.addRecipe(this.form.value).subscribe(res => {
