@@ -8,12 +8,12 @@ const routes: Routes = [
     loadChildren: './login/login.module#LoginModule'
   },
   {
-    path: '',
-    loadChildren: './pages/pages.module#PagesModule'
-  },
-  {
     path: 'signup',
     loadChildren: './signup/signup.module#SignupModule'
+  },
+  {
+    path: '',
+    loadChildren: './pages/pages.module#PagesModule'
   },
   { path: '**', redirectTo: '' }
 ];
